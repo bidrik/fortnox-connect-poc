@@ -44,7 +44,8 @@ namespace FortnoxConnect.Controllers
             // Check for errors
             if (!string.IsNullOrEmpty(error))
             {
-                ViewBag.Error = $"Authorization error: {error}";
+                // Use Server.HtmlEncode to prevent XSS
+                ViewBag.Error = $"Authorization error: {Server.HtmlEncode(error)}";
                 return View("Error");
             }
 
@@ -73,7 +74,8 @@ namespace FortnoxConnect.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Error = $"Error exchanging code for token: {ex.Message}";
+                // Use Server.HtmlEncode to prevent XSS from exception messages
+                ViewBag.Error = $"Error exchanging code for token: {Server.HtmlEncode(ex.Message)}";
                 return View("Error");
             }
         }
@@ -133,7 +135,8 @@ namespace FortnoxConnect.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Error = $"Error refreshing token: {ex.Message}";
+                // Use Server.HtmlEncode to prevent XSS from exception messages
+                ViewBag.Error = $"Error refreshing token: {Server.HtmlEncode(ex.Message)}";
                 return View("Error");
             }
         }
