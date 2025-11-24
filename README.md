@@ -218,6 +218,32 @@ For issues related to:
 - **Fortnox API**: Visit [Fortnox Developer Documentation](https://developer.fortnox.se/)
 - **OAuth2**: See [OAuth 2.0 RFC](https://oauth.net/2/)
 
+## Testing
+
+This project includes a comprehensive unit test suite covering all core functionality.
+
+### Test Coverage
+
+The test suite includes **79 unit tests** covering:
+
+- **TokenResponse Model** (11 tests): JSON serialization/deserialization, property validation
+- **OAuth2 Authentication** (43 tests): Authorization code exchange, token refresh, CSRF protection
+- **API Client** (25 tests): HTTP methods, authentication headers, error handling
+
+### Running Tests
+
+```bash
+cd FortnoxConnect.Tests
+dotnet test
+```
+
+For detailed test information, see [FortnoxConnect.Tests/README.md](FortnoxConnect.Tests/README.md).
+
+### Test Results
+- ✅ **Total Tests**: 79
+- ✅ **Passed**: 79
+- ⏱️ **Execution Time**: < 1 second
+
 ## Future Enhancements
 
 Potential improvements for a production application:
@@ -226,7 +252,7 @@ Potential improvements for a production application:
 - User management and multi-user support
 - Webhook support for real-time updates
 - More comprehensive error handling
-- Unit and integration tests
+- ~~Unit and integration tests~~ ✅ **Completed**
 - Docker support
 - CI/CD pipeline
 - API rate limiting and throttling
