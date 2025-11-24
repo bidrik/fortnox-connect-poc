@@ -1,0 +1,30 @@
+@{
+    ViewBag.Title = "Authentication Successful";
+}
+
+<div class="content-section">
+    <div class="success-message">
+        <h2>✓ Authentication Successful!</h2>
+        <p>You have successfully authenticated with Fortnox. Your access token has been stored securely.</p>
+    </div>
+
+    <div class="info-box">
+        <h3>What's Next?</h3>
+        <p>You can now make API calls to Fortnox. Your tokens are stored in the session and will be automatically refreshed when needed.</p>
+    </div>
+
+    <div class="action-section">
+        <h3>Try the API:</h3>
+        <p>
+            <a href="@Url.Action("ApiTest", "Home")" class="btn btn-primary">Test API Calls</a>
+            <a href="@Url.Action("Logout", "Auth")" class="btn btn-secondary">Logout</a>
+        </p>
+    </div>
+
+    <div class="info-box">
+        <h3>For Other Applications:</h3>
+        <p>Other applications can now use this authenticated session to make requests to Fortnox through the API proxy:</p>
+        <code>GET /api/proxy?endpoint=companyinformation</code>
+        <p>The proxy will automatically handle token refresh and authentication headers.</p>
+    </div>
+</div>

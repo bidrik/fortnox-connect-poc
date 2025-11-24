@@ -1,0 +1,36 @@
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="content-section">
+    <h2>Welcome to Fortnox Connect</h2>
+    <p>This is a proof-of-concept ASP.NET 4.7 application that demonstrates OAuth2 authentication flow with the Fortnox API.</p>
+    
+    <div class="info-box">
+        <h3>Features:</h3>
+        <ul>
+            <li>OAuth2 Authorization Code Flow with Fortnox</li>
+            <li>Secure token storage in session</li>
+            <li>Automatic token refresh</li>
+            <li>API proxy for making requests to Fortnox</li>
+            <li>CSRF protection with state parameter</li>
+        </ul>
+    </div>
+
+    <div class="action-section">
+        <h3>Get Started:</h3>
+        <p>Click the button below to authenticate with Fortnox and start making API calls.</p>
+        <a href="@Url.Action("Login", "Auth")" class="btn btn-primary">Connect to Fortnox</a>
+    </div>
+
+    <div class="info-box">
+        <h3>Setup Instructions:</h3>
+        <ol>
+            <li>Register your application at <a href="https://developer.fortnox.se/" target="_blank">Fortnox Developer Portal</a></li>
+            <li>Configure your Client ID and Client Secret in Web.config</li>
+            <li>Set the redirect URI to: <code>https://localhost:44300/auth/callback</code></li>
+            <li>Configure the required scopes in Web.config</li>
+            <li>Start the application and click "Connect to Fortnox"</li>
+        </ol>
+    </div>
+</div>
