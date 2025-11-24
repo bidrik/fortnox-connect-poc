@@ -1,0 +1,53 @@
+@{
+    ViewBag.Title = "API Test";
+}
+
+<div class="content-section">
+    <h2>Test Fortnox API</h2>
+    <p>Use the buttons below to test API calls to Fortnox. The responses will be displayed below.</p>
+
+    <div class="action-section">
+        <button onclick="testCompanyInfo()" class="btn btn-primary">Get Company Information</button>
+        <button onclick="testCustomEndpoint()" class="btn btn-secondary">Test Custom Endpoint</button>
+        <a href="@Url.Action("Success", "Home")" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="api-test-section">
+        <h3>Custom Endpoint Test:</h3>
+        <p>Enter a Fortnox API endpoint (without the base URL):</p>
+        <input type="text" id="customEndpoint" placeholder="e.g., companyinformation or customers" class="input-text" />
+    </div>
+
+    <div id="results" class="results-section">
+        <h3>Response:</h3>
+        <pre id="responseContent">No request made yet. Click a button above to test the API.</pre>
+    </div>
+</div>
+
+<script>
+    function testCompanyInfo() {
+        makeApiCall('@Url.Action("GetCompanyInfo", "Api")');
+    }
+
+    function testCustomEndpoint() {
+        var endpoint = document.getElementById('customEndpoint').value;
+        if (!endpoint) {
+            alert('Please enter an endpoint');
+            return;
+        }
+        makeApiCall('@Url.Action("Proxy", "Api")?endpoint=' + encodeURIComponent(endpoint));
+    }
+
+    function makeApiCall(url) {
+        document.getElementById('responseContent').textContent = 'Loading...';
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseContent').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('responseContent').textContent = 'Error: ' + error.message;
+            });
+    }
+</script>

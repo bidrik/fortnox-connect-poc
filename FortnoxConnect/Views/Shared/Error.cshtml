@@ -1,0 +1,31 @@
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="content-section">
+    <div class="error-message">
+        <h2>⚠️ Error</h2>
+        <p>@Html.Raw(ViewBag.Error ?? "An unexpected error occurred.")</p>
+    </div>
+
+    <div class="action-section">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Go to Home</a>
+        <a href="@Url.Action("Login", "Auth")" class="btn btn-secondary">Try Again</a>
+    </div>
+</div>
+
+<style>
+.error-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.error-message h2 {
+    color: #721c24;
+    margin-bottom: 0.5rem;
+}
+</style>
